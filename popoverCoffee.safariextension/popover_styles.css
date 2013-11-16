@@ -15,8 +15,7 @@ h1 {
   outline: 1px solid #AAA;
   padding: 4px;
   background: #FFF;
-  height: 150px;
-  overflow-y: auto;
+  height: 250px;
 
 }
 .entry {
@@ -41,7 +40,7 @@ h1 {
   outline: 1px solid #AAA;
   padding: 4px;
   background: #FFF;
-  height: 300px;
+  height: 200px;
   overflow-y: auto;
 }
 

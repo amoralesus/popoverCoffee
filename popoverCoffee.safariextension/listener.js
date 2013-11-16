@@ -1,15 +1,25 @@
-function clickHandler(o,recursive) {
-  var e=(recursive)?o:o.target;
-  if ($(e).is('a')) {
-    safari.self.tab.dispatchMessage("link", $(e).get(0).href);
-  }
-  else {
-    var parent = $(e).parents("a").get(0);
-    if(parent) {
-      clickHandler(parent,true);
-    }
-  }
-}
 
-$(document).on("click",clickHandler);
+$(document).ready( function () {
+  function handleMessage(msgEvent) {
+    var messageName = msgEvent.name;
+    var messageData = msgEvent.message;
+    if (messageName === "parseResults") {
+      results = parseResults();
+      safari.self.tab.dispatchMessage("resultsParsed", results);
+    }
+  };
+
+  function parseResults() {
+    var results = $(document).find('.r a');
+    var links = []
+    for(var i = 0; i < results.size(); i++) {
+      links[i] = {href:results[i].href, text:results[i].text};
+    }
+    return links;
+  };
+
+
+  safari.self.addEventListener("message", handleMessage, false);
+
+});
 

@@ -36,6 +36,8 @@
 		<key>Toolbar Items</key>
 		<array>
 			<dict>
+				<key>Command</key>
+				<string>openPopup</string>
 				<key>Identifier</key>
 				<string>pop</string>
 				<key>Image</key>
@@ -45,7 +47,7 @@
 				<key>Palette Label</key>
 				<string></string>
 				<key>Popover</key>
-				<string>pop</string>
+				<string></string>
 			</dict>
 		</array>
 	</dict>

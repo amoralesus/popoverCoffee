@@ -1,28 +1,13 @@
 
-function addLink(link) {
-  var li = '<li class="entry"><span class="time">'+getDateTime()+'</span><span class="link" onclick=\'openLink("'+link+'")\'>'+getShortLinkName(link)+'</span></li>';
-  $("#linksList").append(li);
-  $('.entry').draggable({appendTo: "body", helper: "clone"});
-}
-
-function getShortLinkName( str) {
-  var limit = 70;
-  if (str.length > limit) {
-    return str.substring(0,limit)+"...";
-  } else {
-    return str;
+function populateSearchResults(results) {
+  $('#linksList').html('');
+  for(var i=0; i < results.length; i++) {
+    var li = $('<li class="entry"></li>').html('<a href="'+results[i].href + '">' + results[i].text + '</a>');
+    $('#linksList').append(li);
+    $('.entry').draggable();
   }
 }
 
-function openLink(link) {
-  safari.application.activeBrowserWindow.openTab().url=link;
-}
-
-function getDateTime() {
-  var currentdate = new Date(); 
-  var datetime = ('0' + (currentdate.getMonth()+1)).slice(-2) + "/" + ('0' + currentdate.getDate()).slice(-2) + "/" + "/" + currentdate.getFullYear();
-  return datetime;
-}
 
 $(document).ready(function () {
   $('#drop_container').droppable({
